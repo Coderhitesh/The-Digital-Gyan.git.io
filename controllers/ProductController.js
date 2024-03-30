@@ -10,8 +10,9 @@ exports.createProduct = async(req, res) => {
             img,
             feature
         } = req.body
+        // console.log(req.body)
         if(!name || !description || !img || !feature){
-            res.status(400).json({
+           return  res.status(403).json({
                 success: false,
                 message: 'All fields are required'
             })
@@ -33,9 +34,10 @@ exports.createProduct = async(req, res) => {
         })
 
     } catch (error) {
-        console.log(error);
+        // console.log(error);
         return res.status(500).json({
             success : false,
+            data:error,
             message: "Server error"
         })
     }
