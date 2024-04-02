@@ -93,7 +93,7 @@ exports.deleteSingleProduct = async (req , res)=> {
 exports.singleProduct = async (req,res) => {
     try {
         const id = req.params.id
-        const SingleProduct = await Product.findById(id);
+        const SingleProduct = await Product.find({name:id});
         if(SingleProduct === null){
             res.status(404).json({
                 success : false,
